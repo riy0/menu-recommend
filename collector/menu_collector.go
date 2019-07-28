@@ -44,7 +44,7 @@ func ebaraFoodCollector() error {
 	})
 
 	fmt.Printf("ngo")
-	sql := "INSERT INTO menus(title, image_url, url) VALUES($1,$2,$3)"
+	sql := "INSERT INTO menus(title, cooking_time, image_url, url, calorie, category) VALUES($1, $2, $3, $4, $5, $6)"
 	stmt, err := db.Prepare(Sql)
 	if err != nil {
 		log.Fatal(err)
@@ -52,7 +52,7 @@ func ebaraFoodCollector() error {
 
 	fmt.Printf("ngo")
 	for j := range menus {
-		_, err = stmt.Exec(menus[j], imageUrls[j], urls[j])
+		_, err = stmt.Exec(menus[j], 0, imageUrls[j], urls[j], 0, 0)
 	}
 
 	return nil

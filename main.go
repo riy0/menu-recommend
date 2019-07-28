@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"github.com/riy0/menu_recommend/db"
+	"github.com/riy0/menu_recommend/router"
+)
 
 func main() {
-	fmt.Println("vim-go")
+	db.InitDB()
+	router.Init()
 }
