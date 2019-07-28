@@ -36,3 +36,14 @@ func (m MenuModel) GetAll() ([]Menu, error) {
 	}
 	return menus, nil
 }
+
+func (m MenuModel) GetById(id string) (Menu, error) {
+	db := db.GetDB()
+	var menu Menu
+	sql := "SELECT * FROM menus WHERE id = $1"
+	err := db.QueryRow(sql, id).Scan(&menu.Id, &menu.Title, &menu.CookingTime, &menu.ImageUrl, &menu.Url, &menu.Calorie, &Menu.Category)
+	if err != nil {
+		return menu, err
+	}
+	return menu, nil
+}
