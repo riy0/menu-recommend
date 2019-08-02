@@ -3,11 +3,18 @@ import Vuex from 'vuex'
 const appStore = () => {
     return new Vuex.Store({
         state: {
-            menu_list: {}
+            menu_list: {},
+            menu:{}
         },
         mutations: {
-            menu_list_update(state, payload){
-                state/menu_list = {...payload.data}
+            setMenuList(state, menus){
+                state.menu_list = {...menus.data}
+            }
+            setMenu(state, menu){
+                state.menu = menu.data
+            },
+            clearMenu(state){
+                state.menu = {}
             }
         }
     })

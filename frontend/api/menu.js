@@ -13,6 +13,15 @@ class MenuApi{
         })
         .catch(e => ({ error: e}))
     }
+
+    menu(id){
+        return axios
+            .get(`http://127.0.0.1:8080/menus/${id}`)
+            .then(json => {
+                return json
+            })
+                .catch({ error: e } ))
+    }
 }
 
 const menuApi = new MenuApi()

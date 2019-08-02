@@ -8,7 +8,7 @@ type Menu struct {
 	Id          int64  `json:title`
 	Title       string `json:title`
 	CookingTime int    `json:cooking_time`
-	imageUrl    string `json:image_url`
+	ImageUrl    string `json:image_url`
 	Url         string `json:url`
 	Calorie     int    `json:calorie`
 	Category    int    `json:category`

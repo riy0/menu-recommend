@@ -1,28 +1,23 @@
 <template>
-  <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        料理たち
-      </h1>
-      <h2 class="menu-list">
+  <div>
+    <h1 class="title"> menu </h1> 
+    <div class="menu-list">
       <div v-for="(item, i) in menu_list" :key="i">
-        <a :href="item.url">
+        <nuxt-link ;to="{ path: 'menus/' + item.id }">
           <b-card
-            :title="item.image_url"
-            :img-src="item.image_url" 
-            img-top 
+            :title="item.title"
+            :img-src="item.imgae_url"
+            img-top
             tag="article"
-            style="max-width:30rem;"
+            style="max-width: 20rem;"
             class="mb-2"
           >
-            <b-card-text>calorie: {{ item.calorie }}</b-card-text>
+            <b-card-text>calorie: {{ item.calorie }} </b-card-text>
           </b-card>
-        </a>
-      </div> 
+        </nuxt-link>
+      </div>
     </div>
   </div>
-  </section>
 </template>
 
 <script>
@@ -33,7 +28,7 @@ export default{
   computed: mapState(['menu_list']),
   async fetch({ store }) {
     const json = await menuApi.menus()
-    store.commit('menu_list_update', json)
+    store.commit('setMenuList', json)
   }
 }
 </script>

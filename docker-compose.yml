@@ -2,7 +2,7 @@ version: "3"
 services:
   postgres:
     image: postgres
-    container_name: okazudb
+    container_name: menudb
     ports:
       - "5555:5432"
     environment:
