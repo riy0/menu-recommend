@@ -13,8 +13,9 @@ import (
 )
 
 var (
-	calories     []int
-	cookin_times []string
+	calories         []int
+	cookin_times     []string
+	ingredient_names []string
 )
 
 func detailCollecting() error {
@@ -26,6 +27,9 @@ func detailCollecting() error {
 	}
 	var detailUrl string
 	pp.Print(menus[0].Url)
+	sqlMenus := "UPDATE menus SET cooking_time = $1, calorie = $2, WHERE id = $3"
+	sqlIngredients := "INSERT INTO ingredients(menu_id, name) VALUES($1, $2)"
+
 	for i := range menus {
 		detailUrl = menus[i].Url
 		doc, err := goquery.NewDocument(detailUrl)
@@ -44,15 +48,17 @@ func detailCollecting() error {
 			calorie_i, _ := strconv.Atoi(calorie)
 			calories = append(calories, calorie_i)
 		})
-	}
 
-	sql := "UPDATE menus SET cooking_time = $1, calorie = $2 WHERE id =$3"
-	fmt.Print("nnn")
-	if err != nil {
-		log.Fatal(err)
-	}
-	for k := range menus {
-		_, err = db.Exec(sql, cooking_times[k], calories[k], menus[k].Id)
+		_, err = db.Exec(sqlMenus, cooking_times[i], calories[i], menus[i].Id)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		doc.Find("table > tbody > re").EAch(func(j int, s *goquery.Selection) {
+			ingredient := s.Text()
+			ingredient = strings.TrimSpace(ingredient)
+			_, err = db.Exec(sqlIngredients, menus[i].id, ingredient)
+		})
 	}
 
 	fmt.Print("update")
