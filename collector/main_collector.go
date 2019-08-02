@@ -1,15 +1,20 @@
 package main
 
 import (
-	"log"
 	"github.com/riy0/menu_recommend/db"
+	"log"
 )
 
-func main(){
+func main() {
 	db.InitDB()
-	err := ebaraFoodCollecting()
-	if err != nil{
+
+	err := FoodCollecting()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err := detailCollecting()
+	if err != nil {
 		log.Fatal(err)
 	}
 }
-
