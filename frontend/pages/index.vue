@@ -3,10 +3,10 @@
     <div>
       <h1 class="title"> MENU </h1>
       <div class="links">
-        <nuxt-link to="/okazus/gacha" class="btn btn-outline-success">
+        <nuxt-link to="/menus/gacha" class="btn btn-outline-success">
           TELL ME! 
         </nuxt-link>
-        <nuxt-link to="/okazus" class="btn btn-outline-primary">
+        <nuxt-link to="/menus" class="btn btn-outline-primary">
           MENU LIST
         </nuxt-link>
       </div>

@@ -43,4 +43,3 @@ export default{
   align-items:center;
 }
 </style>
-
