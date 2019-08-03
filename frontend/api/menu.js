@@ -31,7 +31,7 @@ class MenuApi{
         return axios
             .get(`${ingredientsUrl}`)
             .then(json => {
-                return json
+                return json.data
             };
             .catch(e => ({ error: e }))
     }

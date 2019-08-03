@@ -20,6 +20,9 @@ const appStore = () => {
             clearMenu(state){
                 state.menu = {}
             }
+            clearIngredient(state) {
+                state.ingredient_list = {}
+            }
         }
     })
 }
