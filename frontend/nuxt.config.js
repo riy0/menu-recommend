@@ -15,6 +15,9 @@ export default {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Sawarabi+Gothic' }
     ],
   },
+  env:{
+      baseUrl: process.env.API_ENDPOINT || https://menuweb.herokuapp.com/menus'
+  },
   /*
   ** Customize the progress-bar color
   */

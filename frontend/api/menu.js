@@ -2,10 +2,11 @@ import axios from 'axios'
 
 class MenuApi{
     constructor(){
-        this.apiBase = 'http://127.0.0.1:8080/menus'
+        this.apiBase = process.env.baseUrl
     }
 
     menus(){
+        console.log(process.env.baseUrl) 
         return axios
         .get(`${this.apiBase}`)
         .then(json => {
@@ -16,7 +17,7 @@ class MenuApi{
 
     menu(id){
         return axios
-            .get(`http://127.0.0.1:8080/menus/${id}`)
+            .get(`${menuUrl}`)
             .then(json => {
                 return json
             })

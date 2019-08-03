@@ -12,7 +12,12 @@ var (
 )
 
 func InitDB() {
-	db, err = sql.Open("postgres", "host=127.0.0.1 port=5555 user=root password=password dbname=menudb sslmode=disable")
+	env := os.Getenv("ENV")
+	if env == "development" {
+		db, err = sql.Open("postgres", "host=127.0.0.1 port=5555 user=root password=password dbname=menudb sslmode=disable")
+	} else {
+		db, err = sql.Open("postgres", os.Getenv("DATABASE_URL"))
+	}
 	if err != nil {
 		panic(err)
 	}
