@@ -25,7 +25,7 @@ func router() *gin.Engine {
 
 	i := r.Group("/ingredient")
 	{
-		ingredient := new(controller.IngredientController)
+		ingredient := new(controller.IngredientsController)
 		i.GET("/:menu_id", ingredient.Index)
 	}
 

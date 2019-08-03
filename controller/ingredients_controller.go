@@ -7,13 +7,13 @@ import (
 	"net/http"
 )
 
-type IngredientsController struct {}
+type IngredientsController struct{}
 
 func (ctrl IngredientsController) Index(c *gin.Context) {
 	var m model.IngredientModel
 	menu_id := c.Params.ByName("menu_id")
-	p, err := m.GetMenuId(menu_id)
-	if err != nil{
+	p, err := m.GetByMenuId(menu_id)
+	if err != nil {
 		c.AbortWithStatus(http.StatusBadRequest)
 		log.Fatal(err)
 	} else {

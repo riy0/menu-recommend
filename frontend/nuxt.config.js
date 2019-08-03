@@ -16,7 +16,7 @@ export default {
     ],
   },
   env:{
-      baseUrl: process.env.API_ENDPOINT || https://menuweb.herokuapp.com/menus'
+      baseUrl: process.env.API_ENDPOINT || https://menuweb.herokuapp.com'
   },
   /*
   ** Customize the progress-bar color

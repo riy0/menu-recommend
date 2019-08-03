@@ -4,7 +4,8 @@ const appStore = () => {
     return new Vuex.Store({
         state: {
             menu_list: {},
-            menu:{}
+            menu:{},
+            ingredient_list: {}
         },
         mutations: {
             setMenuList(state, menus){
@@ -13,6 +14,9 @@ const appStore = () => {
             setMenu(state, menu){
                 state.menu = menu.data
             },
+            setIngredientList(state, ingredients){
+                state.ingredient_list = {...ingredients.data}
+            }
             clearMenu(state){
                 state.menu = {}
             }
